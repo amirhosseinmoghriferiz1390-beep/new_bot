@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ربات‌ساز | روبیکا و ایتا</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#0b1020;color:#f5f7ff;line-height:1.8}
+header{background:#111a2e;border-bottom:1px solid #2b3855;position:sticky;top:0;z-index:5}
+nav{max-width:1050px;margin:auto;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+.logo{font-size:24px;font-weight:bold;color:#6ee7ff}nav a{color:#ccd5e7;text-decoration:none;margin:0 7px}
+.hero{text-align:center;padding:80px 20px;background:radial-gradient(circle at 20% 20%,#16445a,transparent 35%),radial-gradient(circle at 80% 10%,#30396b,transparent 35%)}
+.hero h1{font-size:clamp(38px,7vw,68px);margin:0 0 15px}.hero span{color:#6ee7ff}.hero p{max-width:750px;margin:0 auto 28px;color:#aeb9cf;font-size:18px}
+.container{max-width:1050px;margin:auto;padding:60px 20px}.title{text-align:center;font-size:32px}.sub{text-align:center;color:#9aa7bf;margin-bottom:30px}
+.panel{background:#121a2e;border:1px solid #2b3855;border-radius:20px;padding:28px}
+.platforms{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:15px 0 25px}.platform{padding:16px;border:2px solid #34415e;background:#0d1527;color:white;border-radius:12px;cursor:pointer;font:inherit;font-weight:bold}.platform.active{border-color:#6ee7ff}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}label{display:block;font-weight:bold;margin:15px 0 7px}input,textarea{width:100%;padding:13px;border-radius:10px;border:1px solid #36435f;background:#0b1222;color:#fff;font:inherit}textarea{min-height:100px;resize:vertical}.full{grid-column:1/-1}
+.command{display:grid;grid-template-columns:1fr 2fr auto;gap:10px;margin:10px 0}.btn{border:0;border-radius:10px;padding:12px 20px;background:#6ee7ff;color:#061018;font-weight:bold;cursor:pointer;font:inherit}.secondary{background:#26324c;color:#fff}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.remove{background:#572d3a;color:#fff;border:0;border-radius:9px;padding:10px;cursor:pointer}
+.notice{margin-top:20px;padding:14px;border-radius:12px;background:#2a2413;border:1px solid #75601f;color:#f5d879}.output{display:none;margin-top:25px}.output.show{display:block}.code{direction:ltr;text-align:left;white-space:pre-wrap;background:#070b14;border:1px solid #293552;border-radius:12px;padding:18px;min-height:200px;font-family:Consolas,monospace;color:#d9e4ff}
+footer{text-align:center;border-top:1px solid #283451;padding:35px 20px;color:#8f9bb1}.dev{color:#6ee7ff;font-weight:bold}
+@media(max-width:700px){.grid,.platforms{grid-template-columns:1fr}.full{grid-column:auto}.command{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><nav><div class="logo">🤖 ربات‌ساز</div><div><a href="#builder">ساخت ربات</a><a href="#guide">راهنما</a></div></nav></header>
+<section class="hero"><h1>ربات خودت را <span>بساز!</span></h1><p>ساخت رایگان تنظیمات و کد اولیه برای پروژه‌های روبیکا و ایتا.</p><a class="btn" href="#builder">شروع ساخت رایگان 🚀</a></section>
+
+<section class="container" id="builder">
+<h2 class="title">ساخت ربات رایگان</h2><p class="sub">مشخصات رباتت را وارد کن و خروجی اولیه بگیر.</p>
+<div class="panel">
+<label>پلتفرم</label>
+<div class="platforms">
+<button id="rubika" class="platform active" onclick="platform='روبیکا';toggle()">🟣 روبیکا</button>
+<button id="eitaa" class="platform" onclick="platform='ایتا';toggle()">🔵 ایتا</button>
+</div>
+<div class="grid">
+<div><label>نام ربات</label><input id="name" placeholder="مثلاً ربات فروشگاه من"></div>
+<div><label>شناسه ربات</label><input id="username" placeholder="مثلاً my_shop_bot"></div>
+<div class="full"><label>پیام خوشامدگویی</label><textarea id="welcome" placeholder="سلام! به ربات ما خوش آمدید."></textarea></div>
+</div>
+<h3>دستورها و پاسخ‌ها</h3><div id="commands"></div>
+<button class="btn secondary" onclick="addCommand()">+ افزودن دستور</button>
+<div class="actions"><button class="btn" onclick="build()">⚙️ ساخت خروجی</button><button class="btn secondary" onclick="resetAll()">پاک کردن</button></div>
+<div class="notice">⚠️ این نسخه رایگان، تنظیمات و قالب کد اولیه را می‌سازد. برای اجرای واقعی ربات باید به API رسمی پلتفرم و یک سرور امن متصل شود.</div>
+<div id="output" class="output"><h3>✅ خروجی آماده است</h3><pre id="code" class="code"></pre><div class="actions"><button class="btn" onclick="copyCode()">📋 کپی کد</button><button class="btn secondary" onclick="downloadCode()">⬇️ ذخیره فایل</button></div></div>
+</div></section>
+
+<section class="container" id="guide"><h2 class="title">راهنما</h2><p class="sub">همه پردازش‌های این نسخه داخل مرورگر انجام می‌شود.</p><div class="panel">۱. پلتفرم را انتخاب کن.<br>۲. مشخصات ربات را وارد کن.<br>۳. دستور و پاسخ اضافه کن.<br>۴. روی «ساخت خروجی» بزن.<br>۵. کد تولیدشده را کپی یا ذخیره کن.</div></section>
+
+<footer><p>© 2026 ربات‌ساز</p><p class="dev">🚧 سایت همچنان در حال توسعه است</p><p>امکانات جدید به‌مرور اضافه خواهند شد.</p></footer>
+
+<script>
+let platform='روبیکا';
+function toggle(){document.getElementById('rubika').classList.toggle('active',platform==='روبیکا');document.getElementById('eitaa').classList.toggle('active',platform==='ایتا')}
+function addCommand(c='',a=''){const d=document.createElement('div');d.className='command';d.innerHTML='<input class="cmd" placeholder="/start" value="'+esc(c)+'"><input class="ans" placeholder="پاسخ ربات" value="'+esc(a)+'"><button class="remove" onclick="this.parentElement.remove()">حذف</button>';document.getElementById('commands').appendChild(d)}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')}
+function build(){
+ const name=document.getElementById('name').value.trim(),user=document.getElementById('username').value.trim(),welcome=document.getElementById('welcome').value.trim();
+ if(!name)return alert('نام ربات را وارد کن.');
+ if(!user)return alert('شناسه ربات را وارد کن.');
+ const rows=[...document.querySelectorAll('.command')].map(x=>[x.querySelector('.cmd').value.trim(),x.querySelector('.ans').value.trim()]).filter(x=>x[0]);
+ let code='# قالب اولیه ربات‌ساز\n# پلتفرم: '+platform+'\n# نام: '+name+'\n# شناسه: '+user+'\n\nWELCOME = '+JSON.stringify(welcome||'سلام! به ربات ما خوش آمدید.')+'\n\nRESPONSES = {\n';
+ rows.forEach((x,i)=>code+='  '+JSON.stringify(x[0])+': '+JSON.stringify(x[1]||'پاسخی ثبت نشده است.')+(i<rows.length-1?',':'')+'\n');
+ code+='}\n\n# این خروجی برای اتصال به API رسمی '+platform+' باید تکمیل شود.\n# توکن‌ها و کلیدهای محرمانه را داخل GitHub عمومی قرار نده.\n';
+ document.getElementById('code').textContent=code;document.getElementById('output').classList.add('show');document.getElementById('output').scrollIntoView({behavior:'smooth'})
+}
+function copyCode(){navigator.clipboard.writeText(document.getElementById('code').textContent).then(()=>alert('کد کپی شد.'))}
+function downloadCode(){const b=new Blob([document.getElementById('code').textContent],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='robot-config.txt';a.click();URL.revokeObjectURL(a.href)}
+function resetAll(){document.getElementById('name').value='';document.getElementById('username').value='';document.getElementById('welcome').value='';document.getElementById('commands').innerHTML='';document.getElementById('output').classList.remove('show');addCommand('/start','سلام! به ربات ما خوش آمدید.');addCommand('/help','راهنمای ربات')}
+addCommand('/start','سلام! به ربات ما خوش آمدید.');addCommand('/help','راهنمای ربات');
+</script>
+</body>
+</html>
