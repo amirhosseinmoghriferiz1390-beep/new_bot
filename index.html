@@ -445,87 +445,19 @@
 
   <div class="plans">
     <div class="card featured">
-      <div class="badge">اشتراک سالانه</div>
-      <h3>اشتراک ربات‌ساز</h3>
-      <div class="price">
-        ۵۰,۰۰۰
-        <small>تومان / سال</small>
-      </div>
+      <div class="badge">ربات روبیکا</div>
+      <h3>ساخت ربات</h3>
+      <div class="price">رایگان <small>فعلاً</small></div>
       <ul class="features">
-        <li>استفاده از امکانات ربات‌ساز</li>
-        <li>فعال بودن اشتراک به مدت ۱ سال</li>
-        <li>پشتیبانی اولیه</li>
-        <li>امکان تمدید اشتراک</li>
+        <li>ساخت تنظیمات ربات</li>
+        <li>اتصال به روبیکا</li>
+        <li>پاسخ‌گویی هوشمند</li>
+        <li>امکان توسعه در آینده</li>
       </ul>
-      <button class="button" onclick="selectPlan('سالانه', 50000)">
-        انتخاب اشتراک 💳
+      <button class="button" onclick="document.getElementById('builder').scrollIntoView({behavior:'smooth'})">
+        شروع ساخت ربات 🤖
       </button>
     </div>
-  </div>
-
-      <ul class="features">
-        <li>منوی ساده</li>
-        <li>پاسخ‌های آماده</li>
-        <li>تنظیم نام ربات</li>
-        <li>پشتیبانی اولیه</li>
-      </ul>
-
-      <button class="button" onclick="selectPlan('ساده', 50000)">
-        انتخاب پلن
-      </button>
-
-    </div>
-
-
-    <!-- Professional -->
-    <div class="card featured">
-
-      <div class="badge">محبوب</div>
-
-      <h3>ربات حرفه‌ای</h3>
-
-      <div class="price">
-        ۱۰۰,۰۰۰
-        <small>تومان</small>
-      </div>
-
-      <ul class="features">
-        <li>تمام امکانات پلن ساده</li>
-        <li>منوی پیشرفته</li>
-        <li>فرم دریافت اطلاعات</li>
-        <li>قابلیت توسعه</li>
-      </ul>
-
-      <button class="button" onclick="selectPlan('حرفه‌ای', 100000)">
-        انتخاب پلن
-      </button>
-
-    </div>
-
-
-    <!-- Special -->
-    <div class="card">
-
-      <h3>ربات ویژه</h3>
-
-      <div class="price">
-        ۲۰۰,۰۰۰
-        <small>تومان</small>
-      </div>
-
-      <ul class="features">
-        <li>امکانات اختصاصی</li>
-        <li>طراحی سفارشی</li>
-        <li>امکانات پیشرفته</li>
-        <li>پشتیبانی بیشتر</li>
-      </ul>
-
-      <button class="button" onclick="selectPlan('ویژه', 200000)">
-        انتخاب پلن
-      </button>
-
-    </div>
-
   </div>
 </section>
 
@@ -591,70 +523,55 @@
     <div class="summary">
 
       <div class="summary-row">
-        <span>پلن انتخابی:</span>
-        <strong id="selectedPlan">انتخاب نشده</strong>
+        <span>نوع ربات:</span>
+        <strong id="selectedPlan">ربات روبیکا</strong>
       </div>
 
       <div class="summary-row">
-        <span>قیمت:</span>
-        <strong id="selectedPrice">۰ تومان</strong>
+        <span>وضعیت:</span>
+        <strong id="selectedPrice">آماده ساخت</strong>
       </div>
 
       <div class="summary-row total">
-        <span>مبلغ قابل پرداخت:</span>
-        <strong id="totalPrice">۰ تومان</strong>
+        <span>اتصال:</span>
+        <strong id="totalPrice">روبیکا</strong>
       </div>
 
     </div>
 
 
-    <button class="button" onclick="goToPayment()">
-      ادامه و پرداخت 💳
+    <button class="button" onclick="goToRubika()">
+      ادامه و اتصال به روبیکا 🤖
     </button>
 
 
-    <div class="payment" id="payment">
-
-      <h2>پرداخت سفارش</h2>
-
+    <div class="payment show" id="payment">
+      <h2>فعال‌سازی ربات در روبیکا</h2>
       <br>
-
       <div class="test-warning">
-        🔒 <strong>پرداخت امن</strong>
+        🔐 توکن ربات فقط برای اتصال سمت سرور استفاده می‌شود.
         <br>
-        پرداخت واقعی باید از طریق سرور و درگاه رسمی انجام شود.
-        کلیدها و اطلاعات محرمانه داخل این فایل قرار نمی‌گیرند.
+        توکن را در GitHub یا داخل کد سایت قرار نده.
       </div>
 
-      <p>
-        مبلغ اشتراک سالانه: <strong id="gatewayAmount">۵۰,۰۰۰ تومان</strong>
-      </p>
+      <div class="form-group">
+        <label for="rubikaToken">توکن ربات روبیکا</label>
+        <div class="small-note">اول ربات را در «مدیریت بات‌های روبیکا» بساز و توکنش را بگیر؛ این سایت همان ربات را فعال و به هوش مصنوعی وصل می‌کند.</div>
+        <input id="rubikaToken" type="password" placeholder="توکن را اینجا وارد کن">
+      </div>
 
-      <br>
-
-      <button class="button" onclick="startPayment()">
-        رفتن به درگاه پرداخت 💳
+      <button class="button" onclick="createRubikaBot()">
+        فعال‌سازی ربات در روبیکا 🤖
       </button>
 
-      <p id="paymentMessage" style="margin-top:15px;color:#9da8c1;"></p>
-
+      <p id="rubikaMessage" style="margin-top:15px;color:#9da8c1;"></p>
 
       <div class="success" id="success">
-
-        <h2>✅ پرداخت آزمایشی موفق بود!</h2>
-
-        <p>
-          سفارش شما با موفقیت ثبت شد.
-        </p>
-
-        <div class="order-code" id="orderCode"></div>
-
-        <p>
-          اطلاعات سفارش برای ساخت ربات آماده است.
-        </p>
-
+        <h2>✅ ربات آماده شد</h2>
+        <p id="successText"></p>
+        <div class="order-code" id="botUsername"></div>
+        <p>حالا می‌توانی در روبیکا ربات را باز کنی و پیام بفرستی.</p>
       </div>
-
     </div>
 
   </div>
@@ -670,7 +587,7 @@
   </h2>
 
   <p class="section-subtitle">
-    ساخت سفارش در سه مرحله
+    فعال‌سازی ربات روبیکا در سه مرحله
   </p>
 
 
@@ -737,115 +654,81 @@
 
 
 <script>
-
-  let selectedPlan = "";
+  let selectedPlan = "روبیکا";
   let selectedPrice = 0;
 
-
   function selectPlan(plan, price) {
-
     selectedPlan = plan;
     selectedPrice = price;
-
-    document.getElementById("selectedPlan").textContent =
-      "ربات " + plan;
-
-    document.getElementById("selectedPrice").textContent =
-      price.toLocaleString("fa-IR") + " تومان";
-
-    document.getElementById("totalPrice").textContent =
-      price.toLocaleString("fa-IR") + " تومان";
-
-    document.getElementById("builder").scrollIntoView({
-      behavior: "smooth"
-    });
-
+    document.getElementById("selectedPlan").textContent = "ربات " + plan;
+    document.getElementById("selectedPrice").textContent = price ? price.toLocaleString("fa-IR") + " تومان" : "رایگان";
+    document.getElementById("totalPrice").textContent = price ? price.toLocaleString("fa-IR") + " تومان" : "روبیکا";
+    document.getElementById("builder").scrollIntoView({behavior:"smooth"});
   }
 
-
-  function goToPayment() {
-
-    const botName =
-      document.getElementById("botName").value.trim();
-
-    const description =
-      document.getElementById("botDescription").value.trim();
-
-
-    if (!selectedPlan) {
-
-      alert("ابتدا یک پلن انتخاب کن.");
-
-      document.getElementById("plans").scrollIntoView({
-        behavior: "smooth"
-      });
-
-      return;
-    }
-
+  function goToRubika() {
+    const botName = document.getElementById("botName").value.trim();
+    const description = document.getElementById("botDescription").value.trim();
 
     if (!botName) {
-
       alert("لطفاً نام ربات را وارد کن.");
-
       document.getElementById("botName").focus();
-
       return;
     }
-
-
     if (!description) {
-
       alert("لطفاً توضیحات ربات را وارد کن.");
-
       document.getElementById("botDescription").focus();
-
       return;
     }
-
 
     document.getElementById("payment").classList.add("show");
-
-    document.getElementById("payment").scrollIntoView({
-      behavior: "smooth"
-    });
-
+    document.getElementById("payment").scrollIntoView({behavior:"smooth"});
   }
 
+  async function createRubikaBot() {
+    const token = document.getElementById("rubikaToken").value.trim();
+    const message = document.getElementById("rubikaMessage");
+    const success = document.getElementById("success");
 
-  async function startPayment() {
-    const message = document.getElementById("paymentMessage");
-    message.textContent = "در حال آماده‌سازی پرداخت…";
+    if (!token) {
+      message.textContent = "لطفاً توکن ربات روبیکا را وارد کن.";
+      return;
+    }
+
+    message.textContent = "در حال بررسی توکن و فعال‌سازی ربات… ⏳";
+    success.classList.remove("show");
 
     const payload = {
-      plan: selectedPlan,
-      amount: selectedPrice,
+      token,
       botName: document.getElementById("botName").value.trim(),
       botType: document.getElementById("botType").value,
       description: document.getElementById("botDescription").value.trim()
     };
 
     try {
-      // این آدرس باید به بک‌اند واقعی درگاه وصل شود.
-      const response = await fetch("/api/create-payment", {
+      const response = await fetch("/api/rubika/bots", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {"Content-Type": "application/json"},
         body: JSON.stringify(payload)
       });
 
       const data = await response.json();
 
-      if (!response.ok || !data.paymentUrl) {
-        throw new Error(data.error || "درگاه پرداخت هنوز متصل نشده است.");
+      if (!response.ok) {
+        throw new Error(data.error || "فعال‌سازی ربات انجام نشد.");
       }
 
-      window.location.href = data.paymentUrl;
+      document.getElementById("successText").textContent =
+        data.message || "ربات با موفقیت به سرور متصل شد.";
+      document.getElementById("botUsername").textContent =
+        data.username ? "@" + data.username.replace(/^@/, "") : "ربات روبیکا";
+      success.classList.add("show");
+      message.textContent = "اتصال با موفقیت انجام شد. ✅";
     } catch (error) {
-      message.textContent = "در حال حاضر درگاه واقعی هنوز متصل نشده است. ابتدا بک‌اند درگاه را راه‌اندازی کنید.";
       console.error(error);
+      message.textContent = error.message || "خطا در اتصال به سرور.";
     }
   }
-
 </script>
 
 </body>
